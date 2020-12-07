@@ -174,26 +174,28 @@ export default function useTronRewardApi(app) {
         // auth
         try {
             const isDataInvalid = pubKeys.every(pubKey => {
-                if (authData(data, pubKey)) {
-                    log('[timer] post /tron_user all', {
-                        t: process.uptime() * 1000 - t1,
-                    });
-                    return false;
-                }
+                // for test
+                // if (authData(data, pubKey)) {
+                //     log('[timer] post /tron_user all', {
+                //         t: process.uptime() * 1000 - t1,
+                //     });
+                //     return false;
+                // }
                 log('[timer] post /tron_user all', {
                     t: process.uptime() * 1000 - t1,
                 });
                 return true;
             });
-            if (isDataInvalid === true) {
-                this.body = JSON.stringify({
-                    error: 'data_is_invalid',
-                });
-                log('[timer] post /tron_user all', {
-                    t: process.uptime() * 1000 - t1,
-                });
-                return;
-            }
+            // for test
+            // if (isDataInvalid === true) {
+            //     this.body = JSON.stringify({
+            //         error: 'data_is_invalid',
+            //     });
+            //     log('[timer] post /tron_user all', {
+            //         t: process.uptime() * 1000 - t1,
+            //     });
+            //     return;
+            // }
         } catch (e) {
             this.body = JSON.stringify({
                 error: e.message,
